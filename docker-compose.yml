@@ -18,8 +18,6 @@ services:
             - ${POSTGRES_PORT:-5431}:5432
         restart: ${POSTGRES_RESTART}
         volumes:
-            # - ./pgsql/init:/docker-entrypoint-initdb.d  # When the container is created from image, the sql in here will run
-            # - ./pgsql/pgdata:/var/lib/postgresql  # Get the data from container to the host
             - ${POSTGRES_RUN_SQL}
             - ${POSTGRES_VOLUME_DATA}
         environment:
