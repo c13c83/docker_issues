@@ -1,0 +1,460 @@
+[PHP]
+
+;;;;;;;;;;;;;;;;;;;
+; Resource Limits ;
+;;;;;;;;;;;;;;;;;;;
+
+; Maximum execution time of each script, in seconds
+; https://php.net/max-execution-time
+; Note: This directive is hardcoded to 0 for the CLI SAPI
+max_execution_time = 30
+
+; Maximum amount of time each script may spend parsing request data. It's a good
+; idea to limit this time on productions servers in order to eliminate unexpectedly
+; long running scripts.
+; Note: This directive is hardcoded to -1 for the CLI SAPI
+; Default Value: -1 (Unlimited)
+; Development Value: 60 (60 seconds)
+; Production Value: 60 (60 seconds)
+; https://php.net/max-input-time
+max_input_time = 60
+
+; Maximum input variable nesting level
+; https://php.net/max-input-nesting-level
+;max_input_nesting_level = 64
+
+; How many GET/POST/COOKIE input variables may be accepted
+;max_input_vars = 1000
+
+; Maximum amount of memory a script may consume
+; https://php.net/memory-limit
+memory_limit = 256M
+
+; Whether PHP will read the POST data.
+; This option is enabled by default.
+; Most likely, you won't want to disable this option globally. It causes $_POST
+; and $_FILES to always be empty; the only way you will be able to read the
+; POST data will be through the php://input stream wrapper. This can be useful
+; to proxy requests or to process the POST data in a memory efficient fashion.
+; https://php.net/enable-post-data-reading
+;enable_post_data_reading = Off
+
+; Maximum size of POST data that PHP will accept.
+; Its value may be 0 to disable the limit. It is ignored if POST data reading
+; is disabled through enable_post_data_reading.
+; https://php.net/post-max-size
+post_max_size = 8M
+
+; Automatically add files before PHP document.
+; https://php.net/auto-prepend-file
+auto_prepend_file =
+
+; Automatically add files after PHP document.
+; https://php.net/auto-append-file
+auto_append_file =
+
+; By default, PHP will output a media type using the Content-Type header. To
+; disable this, simply set it to be empty.
+;
+; PHP's built-in default media type is set to text/html.
+; https://php.net/default-mimetype
+default_mimetype = "text/html"
+
+; PHP's default character set is set to UTF-8.
+; https://php.net/default-charset
+default_charset = "UTF-8"
+
+; PHP internal character encoding is set to empty.
+; If empty, default_charset is used.
+; https://php.net/internal-encoding
+;internal_encoding =
+
+; PHP input character encoding is set to empty.
+; If empty, default_charset is used.
+; https://php.net/input-encoding
+;input_encoding =
+
+; PHP output character encoding is set to empty.
+; If empty, default_charset is used.
+; See also output_buffer.
+; https://php.net/output-encoding
+;output_encoding =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+; Paths and Directories ;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; UNIX: "/path1:/path2"
+;include_path = ".:/php/includes"
+;
+; Windows: "\path1;\path2"
+;include_path = ".;c:\php\includes"
+;
+; PHP's default setting for include_path is ".;/path/to/php/pear"
+; https://php.net/include-path
+
+;;;;;;;;;;;;;;;;
+; File Uploads ;
+;;;;;;;;;;;;;;;;
+
+; Whether to allow HTTP file uploads.
+; https://php.net/file-uploads
+file_uploads = On
+
+; Temporary directory for HTTP uploaded files (will use system default if not
+; specified).
+; https://php.net/upload-tmp-dir
+;upload_tmp_dir =
+
+; Maximum allowed size for uploaded files.
+; https://php.net/upload-max-filesize
+upload_max_filesize = 30M
+
+; Maximum number of files that can be uploaded via a single request
+max_file_uploads = 20
+
+;;;;;;;;;;;;;;;;;;
+; Fopen wrappers ;
+;;;;;;;;;;;;;;;;;;
+
+; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
+; https://php.net/allow-url-fopen
+allow_url_fopen = On
+
+; Whether to allow include/require to open URLs (like https:// or ftp://) as files.
+; https://php.net/allow-url-include
+allow_url_include = Off
+
+; Define the anonymous ftp password (your email address). PHP's default setting
+; for this is empty.
+; https://php.net/from
+;from="john@doe.com"
+
+; Define the User-Agent string. PHP's default setting for this is empty.
+; https://php.net/user-agent
+;user_agent="PHP"
+
+; Default timeout for socket based streams (seconds)
+; https://php.net/default-socket-timeout
+default_socket_timeout = 60
+
+; If your scripts have to deal with files from Macintosh systems,
+; or you are running on a Mac and need to deal with files from
+; unix or win32 systems, setting this flag will cause PHP to
+; automatically detect the EOL character in those files so that
+; fgets() and file() will work regardless of the source of the file.
+; https://php.net/auto-detect-line-endings
+;auto_detect_line_endings = Off
+
+;;;;;;;;;;;;;;;;;;;;;;
+; Dynamic Extensions ;
+;;;;;;;;;;;;;;;;;;;;;;
+
+; If you wish to have an extension loaded automatically, use the following
+; syntax:
+;
+;   extension=modulename
+;
+; For example:
+;
+;   extension=mysqli
+;
+; When the extension library to load is not located in the default extension
+; directory, You may specify an absolute path to the library file:
+;
+;   extension=/path/to/extension/mysqli.so
+;
+; Note : The syntax used in previous PHP versions ('extension=<ext>.so' and
+; 'extension='php_<ext>.dll') is supported for legacy reasons and may be
+; deprecated in a future PHP major version. So, when it is possible, please
+; move to the new ('extension=<ext>) syntax.
+;
+; Notes for Windows environments :
+;
+; - Many DLL files are located in the ext/
+;   extension folders as well as the separate PECL DLL download.
+;   Be sure to appropriately set the extension_dir directive.
+;
+;extension=bz2
+;extension=curl
+;extension=ffi
+;extension=ftp
+;extension=fileinfo
+extension=gd
+;extension=gettext
+;extension=gmp
+;extension=intl
+;extension=imap
+;extension=ldap
+;extension=mbstring
+;extension=exif      ; Must be after mbstring as it depends on it
+;extension=mysqli
+;extension=oci8_12c  ; Use with Oracle Database 12c Instant Client
+;extension=oci8_19  ; Use with Oracle Database 19 Instant Client
+;extension=odbc
+;extension=openssl
+;extension=pdo_firebird
+;extension=pdo_mysql
+;extension=pdo_oci
+;extension=pdo_odbc
+;extension=pdo_pgsql
+;extension=pdo_sqlite
+;extension=pgsql
+;extension=shmop
+
+; The MIBS data available in the PHP distribution must be installed.
+; See https://www.php.net/manual/en/snmp.installation.php
+;extension=snmp
+
+
+[PostgreSQL]
+; Allow or prevent persistent links.
+; https://php.net/pgsql.allow-persistent
+pgsql.allow_persistent = On
+
+; Detect broken persistent links always with pg_pconnect().
+; Auto reset feature requires a little overheads.
+; https://php.net/pgsql.auto-reset-persistent
+pgsql.auto_reset_persistent = Off
+
+; Maximum number of persistent links.  -1 means no limit.
+; https://php.net/pgsql.max-persistent
+pgsql.max_persistent = -1
+
+; Maximum number of links (persistent+non persistent).  -1 means no limit.
+; https://php.net/pgsql.max-links
+pgsql.max_links = -1
+
+; Ignore PostgreSQL backends Notice message or not.
+; Notice message logging require a little overheads.
+; https://php.net/pgsql.ignore-notice
+pgsql.ignore_notice = 0
+
+; Log PostgreSQL backends Notice message or not.
+; Unless pgsql.ignore_notice=0, module cannot log notice message.
+; https://php.net/pgsql.log-notice
+pgsql.log_notice = 0
+
+[bcmath]
+; Number of decimal digits for all bcmath functions.
+; https://php.net/bcmath.scale
+bcmath.scale = 0
+
+
+[gd]
+; Tell the jpeg decode to ignore warnings and try to create
+; a gd image. The warning will then be displayed as notices
+; disabled by default
+; https://php.net/gd.jpeg-ignore-warning
+;gd.jpeg_ignore_warning = 1
+
+[exif]
+; Exif UNICODE user comments are handled as UCS-2BE/UCS-2LE and JIS as JIS.
+; With mbstring support this will automatically be converted into the encoding
+; given by corresponding encode setting. When empty mbstring.internal_encoding
+; is used. For the decode settings you can distinguish between motorola and
+; intel byte order. A decode setting cannot be empty.
+; https://php.net/exif.encode-unicode
+;exif.encode_unicode = ISO-8859-15
+
+; https://php.net/exif.decode-unicode-motorola
+;exif.decode_unicode_motorola = UCS-2BE
+
+; https://php.net/exif.decode-unicode-intel
+;exif.decode_unicode_intel    = UCS-2LE
+
+; https://php.net/exif.encode-jis
+;exif.encode_jis =
+
+; https://php.net/exif.decode-jis-motorola
+;exif.decode_jis_motorola = JIS
+
+; https://php.net/exif.decode-jis-intel
+;exif.decode_jis_intel    = JIS
+
+[opcache]
+; Determines if Zend OPCache is enabled
+;opcache.enable=1
+
+; Determines if Zend OPCache is enabled for the CLI version of PHP
+;opcache.enable_cli=0
+
+; The OPcache shared memory storage size.
+;opcache.memory_consumption=128
+
+; The amount of memory for interned strings in Mbytes.
+;opcache.interned_strings_buffer=8
+
+; The maximum number of keys (scripts) in the OPcache hash table.
+; Only numbers between 200 and 1000000 are allowed.
+;opcache.max_accelerated_files=10000
+
+; The maximum percentage of "wasted" memory until a restart is scheduled.
+;opcache.max_wasted_percentage=5
+
+; When this directive is enabled, the OPcache appends the current working
+; directory to the script key, thus eliminating possible collisions between
+; files with the same name (basename). Disabling the directive improves
+; performance, but may break existing applications.
+;opcache.use_cwd=1
+
+; When disabled, you must reset the OPcache manually or restart the
+; webserver for changes to the filesystem to take effect.
+;opcache.validate_timestamps=1
+
+; How often (in seconds) to check file timestamps for changes to the shared
+; memory storage allocation. ("1" means validate once per second, but only
+; once per request. "0" means always validate)
+;opcache.revalidate_freq=2
+
+; Enables or disables file search in include_path optimization
+;opcache.revalidate_path=0
+
+; If disabled, all PHPDoc comments are dropped from the code to reduce the
+; size of the optimized code.
+;opcache.save_comments=1
+
+; If enabled, compilation warnings (including notices and deprecations) will
+; be recorded and replayed each time a file is included. Otherwise, compilation
+; warnings will only be emitted when the file is first cached.
+;opcache.record_warnings=0
+
+; Allow file existence override (file_exists, etc.) performance feature.
+;opcache.enable_file_override=0
+
+; A bitmask, where each bit enables or disables the appropriate OPcache
+; passes
+;opcache.optimization_level=0x7FFFBFFF
+
+;opcache.dups_fix=0
+
+; The location of the OPcache blacklist file (wildcards allowed).
+; Each OPcache blacklist file is a text file that holds the names of files
+; that should not be accelerated. The file format is to add each filename
+; to a new line. The filename may be a full path or just a file prefix
+; (i.e., /var/www/x  blacklists all the files and directories in /var/www
+; that start with 'x'). Line starting with a ; are ignored (comments).
+;opcache.blacklist_filename=
+
+; Allows exclusion of large files from being cached. By default all files
+; are cached.
+;opcache.max_file_size=0
+
+; Check the cache checksum each N requests.
+; The default value of "0" means that the checks are disabled.
+;opcache.consistency_checks=0
+
+; How long to wait (in seconds) for a scheduled restart to begin if the cache
+; is not being accessed.
+;opcache.force_restart_timeout=180
+
+; OPcache error_log file name. Empty string assumes "stderr".
+;opcache.error_log=
+
+; All OPcache errors go to the Web server log.
+; By default, only fatal errors (level 0) or errors (level 1) are logged.
+; You can also enable warnings (level 2), info messages (level 3) or
+; debug messages (level 4).
+;opcache.log_verbosity_level=1
+
+; Preferred Shared Memory back-end. Leave empty and let the system decide.
+;opcache.preferred_memory_model=
+
+; Protect the shared memory from unexpected writing during script execution.
+; Useful for internal debugging only.
+;opcache.protect_memory=0
+
+; Allows calling OPcache API functions only from PHP scripts which path is
+; started from specified string. The default "" means no restriction
+;opcache.restrict_api=
+
+; Mapping base of shared memory segments (for Windows only). All the PHP
+; processes have to map shared memory into the same address space. This
+; directive allows to manually fix the "Unable to reattach to base address"
+; errors.
+;opcache.mmap_base=
+
+; Facilitates multiple OPcache instances per user (for Windows only). All PHP
+; processes with the same cache ID and user share an OPcache instance.
+;opcache.cache_id=
+
+; Enables and sets the second level cache directory.
+; It should improve performance when SHM memory is full, at server restart or
+; SHM reset. The default "" disables file based caching.
+;opcache.file_cache=
+
+; Enables or disables opcode caching in shared memory.
+;opcache.file_cache_only=0
+
+; Enables or disables checksum validation when script loaded from file cache.
+;opcache.file_cache_consistency_checks=1
+
+; Implies opcache.file_cache_only=1 for a certain process that failed to
+; reattach to the shared memory (for Windows only). Explicitly enabled file
+; cache is required.
+;opcache.file_cache_fallback=1
+
+; Enables or disables copying of PHP code (text segment) into HUGE PAGES.
+; This should improve performance, but requires appropriate OS configuration.
+;opcache.huge_code_pages=0
+
+; Validate cached file permissions.
+;opcache.validate_permission=0
+
+; Prevent name collisions in chroot'ed environment.
+;opcache.validate_root=0
+
+; If specified, it produces opcode dumps for debugging different stages of
+; optimizations.
+;opcache.opt_debug_level=0
+
+; Specifies a PHP script that is going to be compiled and executed at server
+; start-up.
+; https://php.net/opcache.preload
+;opcache.preload=
+
+; Preloading code as root is not allowed for security reasons. This directive
+; facilitates to let the preloading to be run as another user.
+; https://php.net/opcache.preload_user
+;opcache.preload_user=
+
+; Prevents caching files that are less than this number of seconds old. It
+; protects from caching of incompletely updated files. In case all file updates
+; on your site are atomic, you may increase performance by setting it to "0".
+;opcache.file_update_protection=2
+
+; Absolute path used to store shared lockfiles (for *nix only).
+;opcache.lockfile_path=/tmp
+
+[curl]
+; A default value for the CURLOPT_CAINFO option. This is required to be an
+; absolute path.
+;curl.cainfo =
+
+[openssl]
+; The location of a Certificate Authority (CA) file on the local filesystem
+; to use when verifying the identity of SSL/TLS peers. Most users should
+; not specify a value for this directive as PHP will attempt to use the
+; OS-managed cert stores in its absence. If specified, this value may still
+; be overridden on a per-stream basis via the "cafile" SSL stream context
+; option.
+;openssl.cafile=
+
+; If openssl.cafile is not specified or if the CA file is not found, the
+; directory pointed to by openssl.capath is searched for a suitable
+; certificate. This value must be a correctly hashed certificate directory.
+; Most users should not specify a value for this directive as PHP will
+; attempt to use the OS-managed cert stores in its absence. If specified,
+; this value may still be overridden on a per-stream basis via the "capath"
+; SSL stream context option.
+;openssl.capath=
+
+[ffi]
+; FFI API restriction. Possible values:
+; "preload" - enabled in CLI scripts and preloaded files (default)
+; "false"   - always disabled
+; "true"    - always enabled
+;ffi.enable=preload
+
+; List of headers files to preload, wildcard patterns allowed.
+;ffi.preload=
